@@ -7,16 +7,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        alignment: Alignment.center,
-        height: 200,
-        width: 200,
-        decoration: BoxDecoration(color: Colors.green),
-        child: Text(
-          "Hello Flutter",
-          textDirection: TextDirection.ltr,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("App Bar"),
+          centerTitle: true,
+          leading: Icon(Icons.menu),
+          actions: [IconButton(onPressed: null, icon: Icon(Icons.add_a_photo))],
+        ),
+        body: Center(
+          child: Text(
+            "This is text widget",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );

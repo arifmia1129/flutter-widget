@@ -10,20 +10,34 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: Center(
-              child: Container(
-            alignment: Alignment.center,
-            height: 200,
-            width: 200,
-            decoration: BoxDecoration(color: Colors.amber),
-            child: Text(
-              "Hello Flutter Container",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
-          )),
+          body: Column(
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.amber,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.amber,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.amber,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ));
   }
 }

@@ -20,16 +20,20 @@ class HomePage extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
+        ),
         body: Stack(
-      alignment: Alignment.center,
-      children: [
-        Container(height: 200, width: 200, color: Colors.green),
-        Positioned(
-            child: CircleAvatar(
-          radius: 50,
-          backgroundColor: Colors.red,
-        ))
-      ],
-    ));
+          alignment: Alignment.center,
+          children: [
+            Container(height: 200, width: 200, color: Colors.green),
+            Positioned(
+                child: CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.red,
+            ))
+          ],
+        ));
   }
 }

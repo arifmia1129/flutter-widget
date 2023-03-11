@@ -20,34 +20,16 @@ class HomePage extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text("Md Arif"),
-            subtitle: Text("Web Developer (MERN)"),
-            leading: CircleAvatar(child: Icon(Icons.message)),
-            trailing: Icon(Icons.person),
-          ),
-          ListTile(
-            title: Text("Md Arif"),
-            subtitle: Text("Web Developer (MERN)"),
-            leading: CircleAvatar(child: Icon(Icons.message)),
-            trailing: Icon(Icons.person),
-          ),
-          ListTile(
-            title: Text("Md Arif"),
-            subtitle: Text("Web Developer (MERN)"),
-            leading: CircleAvatar(child: Icon(Icons.message)),
-            trailing: Icon(Icons.person),
-          ),
-          ListTile(
-            title: Text("Md Arif"),
-            subtitle: Text("Web Developer (MERN)"),
-            leading: CircleAvatar(child: Icon(Icons.message)),
-            trailing: Icon(Icons.person),
-          ),
-        ],
-      ),
-    );
+        body: Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(height: 200, width: 200, color: Colors.green),
+        Positioned(
+            child: CircleAvatar(
+          radius: 50,
+          backgroundColor: Colors.red,
+        ))
+      ],
+    ));
   }
 }

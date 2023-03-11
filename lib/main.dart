@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: Column(
+          body: Row(
             children: [
               Container(
                 height: 100,
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.amber,
               ),
               SizedBox(
-                height: 10,
+                width: 10,
               ),
               Container(
                 height: 100,
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.amber,
               ),
               SizedBox(
-                height: 10,
+                width: 10,
               ),
               Container(
                 height: 100,
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.amber,
               ),
               SizedBox(
-                height: 10,
+                width: 10,
               ),
             ],
           ),

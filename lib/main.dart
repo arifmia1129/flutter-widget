@@ -10,36 +10,37 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                Container(
-                  height: 200,
-                  width: 200,
-                  color: Colors.amber,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 200,
-                  width: 200,
-                  color: Colors.amber,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 200,
-                  width: 200,
-                  color: Colors.amber,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
-            ),
+          body: ListView(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    height: 400,
+                    width: 400,
+                    color: Colors.amber,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 400,
+                    width: 400,
+                    color: Colors.amber,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 400,
+                    width: 400,
+                    color: Colors.amber,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ],
           ),
         ));
   }

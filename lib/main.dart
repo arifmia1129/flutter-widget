@@ -29,55 +29,21 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(title: Text("Flutter")),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: GridView.count(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            children: [
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-              Container(
-                height: 100,
-                width: 100,
-                color: Colors.red,
-              ),
-            ],
-          ),
+        body: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(color: Colors.green),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(color: Colors.blue),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(color: Colors.yellow),
+            ),
+          ],
         ));
   }
 }

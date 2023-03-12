@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:liquid_swipe/liquid_swipe.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,21 +20,15 @@ class HomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
+    final pages = [
+      Container(color: Colors.green),
+      Container(color: Colors.red),
+      Container(color: Colors.yellow),
+      Container(color: Colors.blue),
+    ];
+
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
-        body: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(height: 200, width: 200, color: Colors.green),
-            Positioned(
-                child: CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.red,
-            ))
-          ],
-        ));
+        appBar: AppBar(title: Text("Flutter")),
+        body: LiquidSwipe(pages: pages));
   }
 }

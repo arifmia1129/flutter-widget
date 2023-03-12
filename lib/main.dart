@@ -5,33 +5,37 @@ import "package:flutter/material.dart";
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  PageController _controller = PageController(initialPage: 0);
-  @override
-  void dispose() {
-    _controller.dispose();
-    // TODO: implement dispose
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: PageView(
-          controller: _controller,
-          children: [
-            Page1(),
-            Page2(),
-            Page3(),
-          ],
+        body: HomePage(),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          child: Center(
+            child: CircleAvatar(
+              radius: 50,
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Page1())),
+                child: Hero(tag: "add", child: Icon(Icons.add_a_photo)),
+              ),
+            ),
+          ),
         ),
       ),
     );

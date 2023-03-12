@@ -5,8 +5,12 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return Hero(
+      tag: "add",
+      child: Icon(
+        Icons.add_a_photo,
+        size: 200,
+      ),
     );
   }
 }

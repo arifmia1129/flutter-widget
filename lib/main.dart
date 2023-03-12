@@ -1,49 +1,39 @@
+import "./page1.dart";
+import "./page2.dart";
+import "./page3.dart";
 import "package:flutter/material.dart";
-import 'package:liquid_swipe/liquid_swipe.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
-  }
+  State<MyApp> createState() => _MyAppState();
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class _MyAppState extends State<MyApp> {
+  PageController _controller = PageController(initialPage: 0);
+  @override
+  void dispose() {
+    _controller.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-
-    final pages = [
-      Container(color: Colors.green),
-      Container(color: Colors.red),
-      Container(color: Colors.yellow),
-      Container(color: Colors.blue),
-    ];
-
-    return Scaffold(
-        appBar: AppBar(title: Text("Flutter")),
-        body: Column(
+    return MaterialApp(
+      home: Scaffold(
+        body: PageView(
+          controller: _controller,
           children: [
-            Expanded(
-              flex: 1,
-              child: Container(color: Colors.green),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(color: Colors.blue),
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(color: Colors.yellow),
-            ),
+            Page1(),
+            Page2(),
+            Page3(),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

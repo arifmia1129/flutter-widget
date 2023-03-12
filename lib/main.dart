@@ -29,44 +29,54 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(title: Text("Flutter")),
-        body: Center(
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Container(
-              height: 250,
-              width: width - 20,
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: [
-                    Text(
-                      "Md Arif Mia,",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "CEO & Founder",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "ABC Ltd.",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
+        body: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: GridView.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
               ),
-            ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.red,
+              ),
+            ],
           ),
         ));
   }

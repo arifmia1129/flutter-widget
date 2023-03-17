@@ -21,21 +21,55 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-          length: 2,
-          child: Scaffold(
-            appBar: AppBar(
-              bottom: TabBar(tabs: [
-                Tab(
-                  icon: Icon(Icons.camera),
-                ),
-                Tab(
-                  icon: Icon(Icons.message),
-                ),
-              ]),
+      home: Scaffold(
+          body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.red,
+            expandedHeight: 200,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("Flutter"),
             ),
-            body: TabBarView(children: [Page1(), Page2()]),
-          )),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+            details("One", "This is one"),
+          ]))
+        ],
+      )),
     );
   }
+}
+
+Widget details(String name, String description) {
+  return ListTile(
+    title: Text(name),
+    subtitle: Text(description),
+    leading: CircleAvatar(
+      child: Text(name[0]),
+    ),
+  );
 }

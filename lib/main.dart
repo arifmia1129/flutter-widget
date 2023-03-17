@@ -21,35 +21,21 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: currentIndex,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.message),
-                label: "Message",
-                backgroundColor: Colors.redAccent),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.call),
-                label: "Call",
-                backgroundColor: Colors.redAccent),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.pan_tool),
-                label: "Pan tool",
-                backgroundColor: Colors.redAccent),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.radio),
-                label: "Radio",
-                backgroundColor: Colors.redAccent),
-          ],
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-        ),
-        body: pages[currentIndex],
-      ),
+      home: DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            appBar: AppBar(
+              bottom: TabBar(tabs: [
+                Tab(
+                  icon: Icon(Icons.camera),
+                ),
+                Tab(
+                  icon: Icon(Icons.message),
+                ),
+              ]),
+            ),
+            body: TabBarView(children: [Page1(), Page2()]),
+          )),
     );
   }
 }

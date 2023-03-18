@@ -22,30 +22,24 @@ class HomePage extends StatelessWidget {
         body: Center(
       child: TextButton(
           onPressed: () {
-            showModalBottomSheet(
+            showDialog(
                 context: context,
                 builder: (context) {
-                  return Container(
-                    height: 250,
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text("One"),
-                          subtitle: Text("This is one"),
-                          trailing: Icon(Icons.alarm),
-                        ),
-                        ListTile(
-                          title: Text("One"),
-                          subtitle: Text("This is one"),
-                          trailing: Icon(Icons.alarm),
-                        ),
-                        ListTile(
-                          title: Text("One"),
-                          subtitle: Text("This is one"),
-                          trailing: Icon(Icons.alarm),
-                        ),
-                      ],
-                    ),
+                  return AlertDialog(
+                    title: Text("Alert"),
+                    content: Text("Are you agress"),
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("No")),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("Yes")),
+                    ],
                   );
                 });
           },

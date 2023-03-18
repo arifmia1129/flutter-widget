@@ -1,86 +1,61 @@
-import "./page1.dart";
-import "./page2.dart";
-import "./page3.dart";
-import "./page4.dart";
+import '/data.dart';
 import "package:flutter/material.dart";
+import 'package:provider/provider.dart';
+import "./page1.dart";
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
+void main() {
+  runApp(ChangeNotifierProvider(create: (_) => Data(), child: MyApp()));
 }
 
-class _MyAppState extends State<MyApp> {
-  var currentIndex = 0;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  final pages = [Page1(), Page2(), Page3(), Page4()];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(
-            flexibleSpace: Container(
-              child: Text(
-                "Flutter",
-                style: TextStyle(color: Colors.white),
-              ),
-              decoration: BoxDecoration(
-                  gradient:
-                      LinearGradient(colors: [Colors.pink, Colors.deepPurple])),
-            ),
-          ),
-          body: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                backgroundColor: Colors.red,
-                expandedHeight: 200,
-                pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text("Flutter"),
-                ),
-              ),
-              SliverList(
-                  delegate: SliverChildListDelegate([
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-                details("One", "This is one"),
-              ]))
-            ],
-          )),
+      home: HomePage(),
     );
   }
 }
 
-Widget details(String name, String description) {
-  return ListTile(
-    title: Text(name),
-    subtitle: Text(description),
-    leading: CircleAvatar(
-      child: Text(name[0]),
-    ),
-  );
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    final providerData = Provider.of<Data>(context);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("State and Porvider"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              providerData.value.toString(),
+              style: TextStyle(fontSize: 50),
+            ),
+            TextButton(
+                onPressed: () {
+                  providerData.increament();
+                },
+                child: Text("Increament")),
+            TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Page1()));
+                },
+                child: Text("Navigate to another page"))
+          ],
+        ),
+      ),
+    );
+  }
 }

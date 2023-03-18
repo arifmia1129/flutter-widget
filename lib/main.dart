@@ -1,11 +1,8 @@
-import '/data.dart';
 import "package:flutter/material.dart";
-import 'package:provider/provider.dart';
-import "./page1.dart";
+import 'package:image_picker/image_picker.dart';
+import "dart:io";
 
-void main() {
-  runApp(ChangeNotifierProvider(create: (_) => Data(), child: MyApp()));
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -27,34 +24,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ImagePicker _picker = ImagePicker();
+  var imageSrc;
+
+  Future handleTakePictureFromCamera() async {
+    var src = await _picker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      imageSrc = src;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final providerData = Provider.of<Data>(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("State and Porvider"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              providerData.value.toString(),
-              style: TextStyle(fontSize: 50),
-            ),
-            TextButton(
+    return Center(
+      child: Column(
+        children: [
+          Container(
+            height: 500,
+            width: double.infinity,
+            color: Colors.blue,
+            child: imageSrc == Null
+                ? Image.file(imageSrc)
+                : Center(child: Text("Image not picked")),
+          ),
+          Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FloatingActionButton(
                 onPressed: () {
-                  providerData.increament();
+                  handleTakePictureFromCamera();
                 },
-                child: Text("Increament")),
-            TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Page1()));
-                },
-                child: Text("Navigate to another page"))
-          ],
-        ),
+                child: Icon(Icons.camera),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              FloatingActionButton(
+                onPressed: null,
+                child: Icon(Icons.photo_album),
+              )
+            ],
+          )
+        ],
       ),
     );
   }

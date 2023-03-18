@@ -22,44 +22,55 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.red,
-            expandedHeight: 200,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text("Flutter"),
+          appBar: AppBar(
+            flexibleSpace: Container(
+              child: Text(
+                "Flutter",
+                style: TextStyle(color: Colors.white),
+              ),
+              decoration: BoxDecoration(
+                  gradient:
+                      LinearGradient(colors: [Colors.pink, Colors.deepPurple])),
             ),
           ),
-          SliverList(
-              delegate: SliverChildListDelegate([
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-            details("One", "This is one"),
-          ]))
-        ],
-      )),
+          body: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                backgroundColor: Colors.red,
+                expandedHeight: 200,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text("Flutter"),
+                ),
+              ),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+                details("One", "This is one"),
+              ]))
+            ],
+          )),
     );
   }
 }

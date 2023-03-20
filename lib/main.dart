@@ -1,89 +1,92 @@
-import 'dart:convert';
-
 import "package:flutter/material.dart";
-import 'package:http/http.dart' as http;
-import "./details.dart";
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var data = [];
-  bool loading = false;
-
-  Future getData() async {
-    setState(() {
-      loading = true;
-    });
-    var url = Uri.https('restcountries.com', '/v3.1/all', {'q': '{https}'});
-
-    var res = await http.get(url);
-
-    var jsonRes = jsonDecode(res.body);
-
-    setState(() {
-      data = jsonRes;
-      loading = false;
-    });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    this.getData();
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: "arial"),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text("Countries data from api"),
+      home: FormPage(),
+    );
+  }
+}
+
+class FormPage extends StatefulWidget {
+  const FormPage({super.key});
+
+  @override
+  State<FormPage> createState() => _FormPageState();
+}
+
+class _FormPageState extends State<FormPage> {
+  final formKey = GlobalKey<FormState>();
+  var name = "";
+  var phone = "";
+  var email = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Form(
+        key: formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    name = value;
+                  });
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Name is required";
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    phone = value;
+                  });
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Phone field is required";
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                onChanged: (value) {
+                  setState(() {
+                    email = value;
+                  });
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Email field is required";
+                  }
+                  return null;
+                },
+              ),
+              TextButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      print([name, phone, email]);
+                    }
+                  },
+                  child: Text("Submit"))
+            ],
           ),
-          body: loading
-              ? Center(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Data loading from server..."),
-                        TextButton(
-                            onPressed: () {
-                              getData();
-                            },
-                            child: Text("Refresh"))
-                      ]),
-                )
-              : Container(
-                  child: ListView.builder(
-                      itemCount: data.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Card(
-                              child: ListTile(
-                            title: Text(data[index]["name"]["common"]),
-                            subtitle: Text(data[index]["capital"][0]),
-                            trailing:
-                                Image.network(data[index]["flags"]["png"]),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          Details(receiveData: data[index])));
-                            },
-                          )),
-                        );
-                      }),
-                )),
+        ),
+      ),
     );
   }
 }
